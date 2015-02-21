@@ -1,0 +1,47 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+/* mixins, variables, etc. */
+
+$gray-medium-light: #ff00ff;
+/* universal */
+html {
+  overflow-y: scroll;
+  overflow-x: scroll;
+}
+body {
+    text-align: center;
+    font-family: arial, sans-serif;
+ }
+
+footer {
+  margin-top: 45px;
+  padding-top: 5px;
+  border-top: 1px solid #eaeaea;
+  color: #777;
+}
+
+footer a {
+  color: #555;
+}
+h1 {
+    background-color: #6495ed;
+}
+
+p {
+    background-color: #e0ffff;
+}
+header{ text-align: right;
+    font-family: arial, sans-serif;
+    font-size: 20px;}
+
+div {
+    background-color: #b0c4de;
+  }
+.app-body{
+  background-color: #b0c4de;  
+ }
+
+.app-head{
+  background-color: #393939;  
+ }

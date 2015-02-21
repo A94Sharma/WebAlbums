@@ -1,0 +1,8 @@
+
+<%= form_for([@album, @album.pictures.build]) do |f| %>
+
+   <p><h2>ADD YOUR PHOTO HERE</h2></p>
+   <p><%= f.file_field :photo %><%= f.label :tags %><%= f.text_field :tag_list %></p>
+    <p><%= f.submit %></p>
+<% end %>
+ <br> <%= link_to 'Back to Album', albums_path %>

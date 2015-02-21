@@ -1,0 +1,23 @@
+
+
+<%= link_to 'Back', albums_path %>
+<table>
+  <tr>
+    <th>Title: <%= @album.title %></th>
+    <th>DESCRIPTION:<%= @album.description %></th>
+    <th><%= link_to 'Edit', edit_album_path(@album) %></th>
+  </tr>
+  <% @picture.each do |p| %>
+    <tr>
+    	<td> <%=image_tag p.photo.url(:medium) %> </td>
+      <td><% p.tags.any? %>
+          <% p.tags.each do |tag| %>
+          <%= link_to tag.name, tag.name %>
+          <% end %>
+      </td>
+      <td><%= link_to ' Delete', album_picture_path(p.album_id,p.id),
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+</table>

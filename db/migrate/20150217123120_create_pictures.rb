@@ -6,6 +6,6 @@ class CreatePictures < ActiveRecord::Migration
       t.references :user
       t.timestamps null: false
     end
-    add_index :pictures, :album, presence: true
+    #add_index :pictures, :album, presence: true
   end
 end

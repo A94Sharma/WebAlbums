@@ -6,6 +6,6 @@ class CreateAlbums < ActiveRecord::Migration
       t.references :user
       t.timestamps null: false
     end
-    add_index :albums, :user, presence: true
+    #add_index :albums, :user, :presence => true
   end
 end

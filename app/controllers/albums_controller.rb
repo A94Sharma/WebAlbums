@@ -1,6 +1,5 @@
 class AlbumsController < ApplicationController
   before_filter :current_user
-
   
   def index
     @album = current_user.albums
@@ -8,7 +7,11 @@ class AlbumsController < ApplicationController
   
   def show
     @album = Album.find(params[:id])
-    @picture=@album.pictures.all
+    if params[:tag].present? 
+      @pictures = @album.pictures.tagged_with(params[:tag])
+    else
+      @pictures=@album.pictures.all
+    end
   end
 
   def new
@@ -34,22 +37,15 @@ class AlbumsController < ApplicationController
     @album.destroy
     redirect_to albums_path
   end
+
   def update
-   @album = current_user.albums.find(params[:id])
+     @album = current_user.albums.find(params[:id])
     if @album.update(album_params)
       redirect_to @album
     else
       render 'edit'
     end
   end
-    def tagged
-      if params[:tag].present? 
-      @pictures = Picture.tagged_with(params[:tag])
-      else 
-      @pictures = Picture.postall
-     end  
-   end
-  
 
   private
     def album_params

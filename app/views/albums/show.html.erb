@@ -7,15 +7,16 @@
     <th>DESCRIPTION:<%= @album.description %></th>
     <th><%= link_to 'Edit', edit_album_path(@album) %></th>
   </tr>
-  <% @picture.each do |p| %>
+  <% @pictures.each do |picture| %>
     <tr>
-    	<td> <%=image_tag p.photo.url(:medium) %> </td>
-      <td><% p.tags.any? %>
-          <% p.tags.each do |tag| %>
-          <%= link_to tag.name, tag.name %>
+      <td> <%=image_tag picture.photo.url(:medium) %> </td>
+      <td><% picture.tags.any? %>
+          <% picture.tags.each do |tag| %>
+          <%= link_to tag.name,album_path(:tag=>tag.name)
+ %>
           <% end %>
       </td>
-      <td><%= link_to ' Delete', album_picture_path(p.album_id,p.id),
+      <td><%= link_to ' Delete', album_picture_path(picture.album_id,picture.id),
               method: :delete,
               data: { confirm: 'Are you sure?' } %></td>
     </tr>

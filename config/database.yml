@@ -25,11 +25,3 @@ production:
  password: enbake
  host: localhost
  #host: web-album.herokuapp.com
- 
-Host	ec2-54-163-255-191.compute-1.amazonaws.com
-Database	da0kqpa5b50v7g
-User	tkbgvezwwyffch
-Port	5432
-Password	Hide kXRgVTL_bUtJyhW6z9AyFjE2pG
-Psql	heroku pg:psql --app web-album HEROKU_POSTGRESQL_YELLOW
-URL	Hide postgres://tkbgvezwwyffch:kXRgVTL_bUtJyhW6z9AyFjE2pG@ec2-54-163-255-191.compute-1.amazonaws.com:5432/da0kqpa5b50v7g

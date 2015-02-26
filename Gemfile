@@ -34,9 +34,8 @@ gem 'bcrypt', '~> 3.1.7'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 gem 'acts-as-taggable-on', '~> 3.4' #for tagging purpose 
-gem 'bootstrap-sass', '~> 3.2.0'
 gem 'autoprefixer-rails'
-
+gem 'cancan'
 # NOTE: The sass-rails gem is included with new Rails applications by default.
 #       Please make sure that it is not already in your Gemfile before uncommenting it.
 #gem 'sass-rails'

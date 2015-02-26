@@ -1,24 +1,30 @@
 
 
 <%= link_to 'Back', albums_path %>
-<table>
+<table><td>
   <tr>
     <th>Title: <%= @album.title %></th>
     <th>DESCRIPTION:<%= @album.description %></th>
     <th><%= link_to 'Edit', edit_album_path(@album) %></th>
   </tr>
   <% @pictures.each do |picture| %>
-    <tr>
-      <td> <%=image_tag picture.photo.url(:medium) %> </td>
-      <td><% picture.tags.any? %>
+    
+    <tr><div class="img-circle"><%=link_to image_tag(picture.photo.url(:medium)),  album_picture_path(picture.album_id,picture.id)
+ %> </div></tr>
+      
+    <tr> 
+        <% picture.tags.any? %>
           <% picture.tags.each do |tag| %>
-          <%= link_to tag.name,album_path(:tag=>tag.name)
- %>
-          <% end %>
-      </td>
-      <td><%= link_to ' Delete', album_picture_path(picture.album_id,picture.id),
+          <%= link_to tag.name,album_path(:tag=>tag.name)%>
+          <% end %> </tr> 
+      
+      <tr> <%= render :partial => "comments/comments", :locals => {:item => picture}  %></tr>
+      
+      <tr><%= link_to ' Delete', album_picture_path(picture.album_id,picture.id),
               method: :delete,
-              data: { confirm: 'Are you sure?' } %></td>
+              data: { confirm: 'Are you sure?' } %></tr>
+                   
     </tr>
   <% end %>
-</table>
+
+</td></table>

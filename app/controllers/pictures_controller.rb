@@ -14,7 +14,10 @@ class PicturesController < ApplicationController
     end
     
     end
-  
+  def show
+    @album = Album.find(params[:album_id])
+    @picture=@album.pictures.find(params[:id])
+  end
   def destroy
     @album = Album.find(params[:album_id])
     @picture=@album.pictures.find(params[:id])

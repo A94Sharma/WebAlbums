@@ -1,2 +1,2 @@
-
-<%= image_tag @picture.photo.url(:small) %>
+<%= image_tag @picture.photo.url %>
+<%= render :partial => "comments/comments", :locals => { :item => @picture} %>

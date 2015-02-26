@@ -6,11 +6,17 @@ Rails.application.routes.draw do
 
 
   resources :albums do
-    resources :pictures
+    resources :pictures do 
+      resources :comments
+    end
   end
+  resources :pictures do 
+      resources :comments
+    end
 	resources :articles do
 	  resources :comments
 	end
+  
   
   root 'welcome#index'
 end

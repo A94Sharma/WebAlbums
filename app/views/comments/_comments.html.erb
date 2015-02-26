@@ -1,0 +1,19 @@
+<% if item.comments.empty? %>
+  No comments to display.
+<% else %>
+  <% for comment in item.comments %>
+    
+    <p><strong><%= comment.commenter %>:</strong><br>
+    	<%= comment.body %></p>
+  <% end %>
+<% end %>
+<div>Add Comment
+<p><%= form_for [item, Comment.new()] do |f| %>
+    <%= f.label :commenter %><br>
+    <%= f.text_field :commenter %><br>
+    <%= f.label :body %><br>
+    <%= f.text_area :body %><br>
+    <%= f.submit %> 
+<% end %>
+</p>
+</div>

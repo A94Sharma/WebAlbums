@@ -2,7 +2,7 @@ class AlbumsController < ApplicationController
   before_filter :current_user
   
   def index
-    @album = current_user.albums
+    @album = Album.all
   end
   
   def show
@@ -10,6 +10,7 @@ class AlbumsController < ApplicationController
     if params[:tag].present? 
       @pictures = @album.pictures.tagged_with(params[:tag])
     else
+
       @pictures=@album.pictures.all
     end
   end
@@ -51,4 +52,5 @@ class AlbumsController < ApplicationController
     def album_params
       params.require(:album).permit(:title, :description, :id)
     end
+
 end

@@ -10,7 +10,6 @@ class AlbumsController < ApplicationController
     if params[:tag].present? 
       @pictures = @album.pictures.tagged_with(params[:tag])
     else
-
       @pictures=@album.pictures.all
     end
   end

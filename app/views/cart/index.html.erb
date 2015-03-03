@@ -1,0 +1,17 @@
+<%= form_tag charges_path do %>
+<h1>Cart</h1>
+  <div>
+  <%= render :partial => 'cart_items', :locals => {:cart_items => @cart.cart_items} %>
+</div>
+<%debugger%>
+<div> <%link_to 'Empty Cart' , cart_clear_path%>
+  <div><b>SubTotal:</b><%= number_to_currency @cart.subtotal %></div>
+  <div><b>Taxes:</b><%= number_to_currency @cart.taxes %></div>
+  <div><b>Total:</b><%= number_to_currency @cart.total %></div>
+
+  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+          data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+          data-description="Buy Picture"
+          data-amount= @cart.total > </script>
+
+     <%end%>

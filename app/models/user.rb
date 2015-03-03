@@ -12,4 +12,22 @@ class User < ActiveRecord::Base
 
    has_many :comments
    has_many :commentables, through: :comments
+   
+   has_many :charges , dependent: :destroy
+   has_one :cart
+
+   after_create :create_first_album
+   
+   def is?(role)
+    roles.include?(role.to_s)
+    end
+
+    def isOwner?
+      #add current user id 
+     id == 5 ? true : false 
+    end
+    def create_first_album
+     Album.new(title: 'My Album' ,description: 'Default Album' ) 
+     #no User Id because of default Album
+    end
 end

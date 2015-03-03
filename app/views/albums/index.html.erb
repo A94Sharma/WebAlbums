@@ -1,5 +1,6 @@
 <h1>Listing Albums</h1>
  <%= link_to 'New album',  new_album_path %>
+ 
 <table>
   <tr>
     <th>Title</th>
@@ -9,12 +10,19 @@
     <tr>
       <td><%= album.title %></td>
       <td><%= album.description %></td><br><br>
-      <td><%= link_to ' Edit', edit_album_path(album) %></td>
-      <td><%= link_to ' Delete', album_path(album),
+      <td><%if can? :edit , album %>
+        <%= link_to ' Edit', edit_album_path(album) %>
+        <%end%></td>
+      <td><%if can? :destroy , album%>
+        <%= link_to ' Delete', album_path(album),
               method: :delete,
-              data: { confirm: 'Are you sure?' } %></td>
+              data: { confirm: 'Are you sure?' } %>
+              <%end%></td>
      <td> <%= link_to ' View', album_path(album.id) %><td>
-     <td> <%= link_to ' Add Photo', new_album_picture_path(album)%></td>
+
+     <td><%if can? :manage , album %> 
+      <%= link_to ' Add Photo', new_album_picture_path(album)%>
+        <%end%></td>
      
 
      <td> </td>

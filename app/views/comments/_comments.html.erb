@@ -1,16 +1,25 @@
+
 <% if item.comments.empty? %>
-  No comments to display.
+  <br>No comments to display.
 <% else %>
   <% for comment in item.comments %>
-    
-    <p><strong><%= comment.commenter %>:</strong><br>
-    	<%= comment.body %></p>
+    <p><strong><%= comment.commenter + ":" %></strong><br>
+    	<%= comment.body %>
+       <%if can? :destroy , comment %>
+       
+         <p><%= link_to ' Delete', 
+            [comment.commentable,comment],
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %>
+</p>
+            <%end%> 
+
+    </p>
   <% end %>
 <% end %>
 <div>Add Comment
 <p><%= form_for [item, Comment.new()] do |f| %>
-    <%= f.label :commenter %><br>
-    <%= f.text_field :commenter %><br>
+    <%= current_user.email + ":" %><br>
     <%= f.label :body %><br>
     <%= f.text_area :body %><br>
     <%= f.submit %> 

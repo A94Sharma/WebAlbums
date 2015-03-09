@@ -17,7 +17,7 @@ user = 'Rails Stripe customer id:' + current_user.id
  
   charge = Stripe::Charge.create(
     :customer    => customer.id,
-    :amount      => @cart.total.to_i,
+    :amount      => (@cart.total*100).to_i,  #Stripe accepts payment in Cents 1$=100 cent
     :description => user,
     :currency    => 'usd'
   )

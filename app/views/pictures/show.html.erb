@@ -1,2 +1,11 @@
-<%= image_tag @picture.photo.url %>
-<%= render :partial => "comments/comments", :locals => { :item => @picture} %>
+<div class="jumbotron" align= "center">
+<div class="well"><%= image_tag @picture.photo.url ,:class=>"img-thumbnail"%>
+<% @picture.tags.each do |tag| %>
+         <a style= "background-color:grey; font-size: 60%; color: white ;">
+         	<%= tag.name  %></a>
+         <% end %>
+</div>
+
+<%= render :partial => "comments/show", :locals => { :item => @picture} %>
+<%= render :partial => "comments/new", :locals => { :item => @picture} %>
+</div>

@@ -1,0 +1,19 @@
+<p width="100%"><%= form_for [item, Comment.new()] do |f| %> 
+<div class="input-group">
+	<span class="input-group-addon ">
+		<%="Commentr"%>
+	</span>
+   
+    <%= f.text_area :body ,:class=>"form-control custom-control",
+    rows: "3" , style: "resize:none",
+    hide_label: true, placeholder: "Leave a comment..." %>   
+
+   <span class="input-group-addon ">
+   	<%= f.submit 'Comment', :class=>"btn btn-primary" %></span>  
+    
+
+</div>
+
+<% end %>
+
+</p>

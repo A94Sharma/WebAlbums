@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+
+  <body>
+    <div class="container">
+      <h3>Comments</h3>
+      <div class="panel-group" id="accordion">
+       <% for comment in item.comments %>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
+                <%= comment.commenter + ":" %></a>
+                <p ><%if can? :destroy , comment %>
+               <%= link_to [comment.commentable,comment],
+              method: :delete,data: { confirm: 'Are you sure?' } do %>
+              <span class ="glyphicon glyphicon-trash"></span> <%end%> 
+            <%end%> </p>
+            </h4>
+          </div>
+          <div id="collapse2" class="panel-collapse collapse">
+            <div class="panel-body"><%= comment.body %></div>
+          </div>
+        </div>
+
+      </div> 
+    </div>
+
+    
+  </body>
+</html>
+
+<div style="background-color:red; font-size:70%">
+<% if item.comments.empty? %>
+  <p> </p>No comments to display. </p>
+<% else %>
+  
+    
+  <% end %>
+<% end %>
+</div>

@@ -1,42 +1,31 @@
-<%= link_to 'Back', albums_path %>
 <div class="jumbotron">
-   <table>
-      <td>
-      <tr>
+<table width="100%"  >
+  <tbody>
+   <tr width="100%" align="center" >
+   <td width="50%" >
          <h1><%= @album.title %></h1>
-         <%if can? :manage ,@album  %>
-         <p><%= link_to 'Edit', edit_album_path(@album) %>
-         </p>
-         <%end%>
-      </tr>
-      <tr>
-         <p><%= @album.description %></p
-         <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>
-      </tr>
+         <p><%= @album.description %>
+            <a class="btn btn-primary btn-sm" href="#" role="button">Learn more</a></p>
       </td>
-      <td>
-      <tr><% @pictures.each do |picture| %>
-         <%=link_to image_tag(picture.photo.url(:medium)),  album_picture_path(picture.album_id,picture.id)
-            %> 
-            <% if !picture.user.isOwner? %>
-            <%= link_to 'Add to cart' , cart_index_path(:picture_id => picture), :method => 'POST'  %>
-            <% end %>
-
-            <% if can? :destroy , picture %>
-           
-
-           <p><%= link_to ' Delete', album_picture_path(picture.album_id,picture.id),
-               method: :delete,
-               data: { confirm: 'Are you sure?' } %></p>
-               <%end%>
-      </tr><br />
-      <% picture.tags.any? %>
-      <tr><% picture.tags.each do |tag| %>
-         <%= link_to tag.name,album_path(:tag=>tag.name)%>,
-         <% end %> 
-      </tr>
-      <tr> <%= render :partial => "comments/comments", :locals => {:item => picture}  %></tr>
-      <% end %>
+      <td width = "50%" >
+       <p width='500px' height ='500px'><%= render :partial => "slider", 
+      :locals => {:items => @pictures}  %></p>
       </td>
-   </table>
+   </tr>
+   <tr width="100%" > 
+    <table>
+      <tbody>
+        <tr>
+          <p><%= render :partial => "comments/new", 
+          :locals => {:item => @album}  %></p>
+         </tr>
+    </tbody>
+
+    </table> 
+       
+   </tr>
+
+ </tbody>   
+</table>
+
 </div>

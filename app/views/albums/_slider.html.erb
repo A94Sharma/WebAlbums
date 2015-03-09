@@ -1,0 +1,48 @@
+﻿
+             
+<div id="slideshow" class="carousel slide" data-ride="carousel" >
+
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    <%items.count.times do |num| %>
+    <li data-target="#slideshow" data-slide-to= <%="#{num}"+ 
+    (' class=active' if num == 0 ).to_s %> </li>
+    <%end%>
+  </ol>
+
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner" role="listbox">
+    <% items.each do |picture| %>
+    <div class="item <%='active' if picture == items.first %> "> 
+      <div class="thumbnail">
+        
+          <span class="addon" style="font-size: 150%; color: white ;background-color: green ;">
+           <b> <%='$'+picture.price.to_s %></b></span>
+          <span class="group-addon">
+            <%=( link_to 'Add to cart' , cart_index_path(:picture_id => picture), 
+            :class=>"btn btn-danger", :method => 'POST' ) if !picture.owner_is(current_user)%>
+          </span>
+             </div>
+      <%=image_tag(picture.photo.url(:medium)) %>
+     
+      <a class ="mark"><% picture.tags.each do |tag| %>
+         <%= link_to tag.name,album_path(:tag=>tag.name) ,
+         :style=> "background-color:grey; font-size: 60%; color: white ;" %>
+         <% end %> </a>          
+
+         </div>
+
+     <%end%>
+    
+  </div>
+
+  <!-- Left and right controls -->
+  <a class="left carousel-control" href="#slideshow" role="button" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="right carousel-control" href="#slideshow" role="button" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>

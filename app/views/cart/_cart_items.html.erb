@@ -1,7 +1,22 @@
+<table class="table" >
+<th>Quantity</th>
+<th>Type</th>
+<th>Price</th>
 <%cart_items.each do |item|%>
 
-Quantity:<%=item.quantity%><br/>
-Type:<%=item.item_type%><br />
-Price:<%=item.price%><br />
---------------------<br />
+<tr>
+<td><%=item.quantity%></td>
+<td><%=item.item_type%></td>
+<td><%=item.price%>
+	
+	<%=link_to cart_path(:id=> session[:cart_id] ,:picture_id => item.item_id), :method => 'PATCH' do %>
+	<span class ="glyphicon glyphicon-trash"></span> <%end%>
+</td>
+</tr>
+
 <%end%>
+<th><b>SubTotal:</b><%= number_to_currency @cart.subtotal %></th>
+<th><b>Taxes:</b><%= number_to_currency @cart.taxes %></th>
+<th><b>Total:</b><%= number_to_currency @cart.total %></th>
+</table>
+

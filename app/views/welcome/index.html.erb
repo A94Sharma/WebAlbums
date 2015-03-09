@@ -1,2 +1,12 @@
-<h1>Hello, Rails!</h1>
+<h3>Hello, There !</h3><p>Checkout ,few of awesomes</p>
 
+<ul align="center" > 
+              <% @pictures.each do |picture| %>
+             <li class="img-thumbnail" align="center" >
+               <%=link_to image_tag(picture.photo.url(:medium)),  album_picture_path(picture.album_id,picture.id)
+            %>
+             </li>
+             <%end%>
+
+
+         </ul>

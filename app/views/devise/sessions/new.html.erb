@@ -1,3 +1,7 @@
+<div class="jumbotron" align="center">
+
+<div class="well">
+
 <div class="border-form-div">
   <% provide(:title, 'Log in') %>
  <h2>Log in</h2>
@@ -18,8 +22,10 @@
      </div>
    <% end -%>
    <div class="actions">
-      <%= f.submit "Log in" %>
+      <%= f.submit "Log in" ,:class=>"btn btn-primary"%>
    </div>
   <% end %>
   <%= render "devise/shared/links" %>
+</div>
+</div>
 </div>

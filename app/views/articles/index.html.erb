@@ -9,16 +9,16 @@
  
   <% @articles.each do |article| %>
     <tr>
-      <td><%= article.title %></td>
-      <td><%= article.text %></td>
-      <td><%= link_to 'Show', article_path(article) %></td>
+      <td><%= link_to  article.title , article_path(article)  %></td>
+      <td><%= article.text %></td> 
       <td><%if can? :edit , article %>
-             <%= link_to 'Edit', edit_article_path(article) %>
+             <%= link_to edit_article_path(article) do %>
+              <span class ="glyphicon glyphicon-edit"></span>  <%end%>
             <%end%> </td>
       <td><%if can? :destroy , article %>
-        <%= link_to 'Destroy', article_path(article),
-              method: :delete,
-              data: { confirm: 'Are you sure?'} %>
+        <%= link_to article_path(article),method: :delete,
+              data: { confirm: 'Are you sure?'} do %>
+              <span class ="glyphicon glyphicon-trash"></span> <%end%> 
             <%end%> </td>
     </tr>
   <% end %>

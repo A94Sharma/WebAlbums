@@ -16,10 +16,9 @@ class Ability
 
         can :manage, Comment do |comment|
           comment && comment.commenter_id == user.id
-
         end
 
-          #admin access
+        #admin access
         can :manage, :all if user.is? :admin
   end
 

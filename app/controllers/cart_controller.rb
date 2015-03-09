@@ -7,10 +7,17 @@ class CartController < ApplicationController
      @cart.add(@picture, @picture.price)
      redirect_to :back
 
+	end 
+
+	def update
+     @picture = Picture.where(:id => params[:picture_id]).first
+     @cart.remove(@picture)
+     redirect_to :back
 	end
 
-	def clear
+	def destroy
 	@cart.clear
+	redirect_to :back
 	end
 
 private #------------#------------

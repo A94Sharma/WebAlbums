@@ -38,22 +38,17 @@ class PicturesController < ApplicationController
   
    def start_transfer
    @cart = session[:cart_id]
-   
+   album_id=current_user.Album.find(1).first.id
    @cart.items.each do |item|
- 
-   @picture = current_user.Picture.new(item) 
-   @picture.update_attributes(:user_id current_user.id , 
-    :album_id current_user.Album.find(1).first.id)
-   if @picture.save
-     @cart.clear
-   else
-    #failed
-    end
-
-   end
-
-  
-   
     
-  end
+    picture= current_user.Picture.new(item) 
+    picture.update_attributes(user_id: current_user.id , album_id: album_id)
+       if @picture.save
+        #do action
+        else
+        #failed
+        end
+    end
+ end
+
 end

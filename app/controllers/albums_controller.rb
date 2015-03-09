@@ -33,13 +33,13 @@ class AlbumsController < ApplicationController
   end
 
   def destroy
-    @album = current_user.albums.find(params[:id])
+    @album = Albums.find(params[:id])
     @album.destroy
     redirect_to albums_path
   end
 
   def update
-     @album = current_user.albums.find(params[:id])
+     @album = Albums.find(params[:id])
     if @album.update(album_params)
       redirect_to @album
     else

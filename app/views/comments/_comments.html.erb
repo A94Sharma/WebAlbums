@@ -1,9 +1,17 @@
+<div class="input-group">
+    <textarea class="form-control custom-control" rows="3" style="resize:none"</textarea> 
+    <span class="input-group-btn">
+        <button class="btn btn-primary">                            
+            <span>Send</span>
+        </button>
+    </span>
+</div>
 
 <% if item.comments.empty? %>
   <br>No comments to display.
 <% else %>
   <% for comment in item.comments %>
-    <p><strong><%= comment.commenter + ":" %></strong><br>
+    <p><strong><%= comment.commenter + ":" %></strong>
     	<%= comment.body %>
        <%if can? :destroy , comment %>
        
@@ -17,12 +25,10 @@
     </p>
   <% end %>
 <% end %>
-<div>Add Comment
-<p><%= form_for [item, Comment.new()] do |f| %>
-    <%= current_user.email + ":" %><br>
-    <%= f.label :body %><br>
-    <%= f.text_area :body %><br>
+<p width="100%"><%= form_for [item, Comment.new()] do |f| %> 
+    <%="Comment:"+ current_user.email%><br/>
+    <%= f.text_area :body %>
     <%= f.submit %> 
 <% end %>
 </p>
-</div>
+

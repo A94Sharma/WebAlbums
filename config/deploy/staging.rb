@@ -1,3 +1,44 @@
+set :stage, :staging
+set :branch, :master
+
+role :app, %w{173.255.195.109}
+role :web, %w{173.255.195.109}
+role :db,  %w{173.255.195.109}
+
+
+server '173.255.195.109',
+       user: 'root',
+       roles: %w{web app db},
+       ssh_options: {
+          user: 'root',
+          auth_methods: %w(password),
+          password: 'gigumes@linode'
+       }
+
+# you can set custom ssh options
+# it's possible to pass any option but you need to keep in mind that net/ssh understand limited list of options
+# you can see them in [net/ssh documentation](http://net-ssh.github.io/net-ssh/classes/Net/SSH.html#method-c-start)
+# set it globally
+#  set :ssh_options, {
+#    keys: %w(/home/rlisowski/.ssh/id_rsa),
+#    forward_agent: false,
+#    auth_methods: %w(password)
+#  }
+# and/or per server
+# server 'example.com',
+#   user: 'user_name',
+#   roles: %w{web app},
+#   ssh_options: {
+#     user: 'user_name', # overrides user setting above
+#     keys: %w(/home/user_name/.ssh/id_rsa),
+#     forward_agent: false,
+#     auth_methods: %w(publickey password)
+#     # password: 'please use keys'
+#   }
+# setting per server overrides global ssh_options
+
+# fetch(:default_env).merge!(rails_env: :production)
+
 # server-based syntax
 # ======================
 # Defines a single server with a list of roles and multiple properties.

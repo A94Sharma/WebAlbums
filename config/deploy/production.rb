@@ -6,8 +6,15 @@ set :bundle_flags, '--deployment --verbose'
 set :bundle_roles, :all
 set :keep_releases, 25
 
-server '54.149.122.85', roles: [:app, :web, :db], :primary => true 
-
+server '54.149.122.85',{
+       roles: [:web, :app, :db],
+       ssh_options: {
+         user: 'ubuntu',
+         keys: %w(~/.ssh/id_rsa.pub),
+         forward_agent: false,
+         auth_methods: %w(publickey)
+       }
+}
 # server-based syntax
 # ======================
 # Defines a single server with a list of roles and multiple properties.

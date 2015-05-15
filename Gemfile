@@ -45,7 +45,7 @@ gem 'cancan'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
-
+  gem 'capi'
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
 
@@ -53,5 +53,10 @@ group :development, :test do
   gem 'spring'
 
   gem 'rails_12factor', group: :production
+  gem 'capistrano', '~> 3.4.0'
+  gem 'capistrano-ext'
+  gem 'capistrano-rvm'
+  gem 'capistrano-bundler'
+  gem "capistrano-db-tasks", require: false
 end
 

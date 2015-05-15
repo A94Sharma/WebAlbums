@@ -16,6 +16,15 @@ test:
  password: enbake
  host: localhost
 
+staging:
+ adapter: postgresql
+ encoding: unicode
+ database: web_albums
+ pool: 5
+ username: enbake
+ password: enbake
+ host: localhost
+
 production:
  adapter: postgresql
  encoding: unicode

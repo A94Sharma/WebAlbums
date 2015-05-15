@@ -1,11 +1,6 @@
 set :stage, :staging
 set :branch, :master
 
-role :app, %w{173.255.195.109}
-role :web, %w{173.255.195.109}
-role :db,  %w{173.255.195.109}
-
-
 server '173.255.195.109',
        user: 'root',
        roles: %w{web app db},

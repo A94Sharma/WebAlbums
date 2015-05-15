@@ -1,7 +1,4 @@
 # config valid only for current version of Capistrano
-require 'capistrano/ext/multistage'
-require 'bundler/capistrano'
-require 'rvm/capistrano'
 lock '3.4.0'
 
 set :application, 'WebAlbums'
@@ -17,7 +14,7 @@ set :default_stage, "staging"
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
 # Default deploy_to directory is /var/www/my_app_name
-set :deploy_to, '/var/www/WebAlbums'
+set(:deploy_to) { "/home/#{user}/web/#{rails_env}" }
 set :deploy_via, :remote_cache
 # Default value for :scm is :git
 # set :scm, :git

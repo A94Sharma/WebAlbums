@@ -14,7 +14,7 @@ set :default_stage, "staging"
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
 # Default deploy_to directory is /var/www/my_app_name
-set(:deploy_to) { "/home/#{user}/web/#{rails_env}" }
+set :deploy_to, '/home/sumit/apps/myweb/WebAlbums/'
 set :deploy_via, :remote_cache
 # Default value for :scm is :git
 # set :scm, :git
@@ -67,7 +67,7 @@ namespace :deploy do
   end
 
 # hook to run db migrations after code update
-after("deploy:update", "deploy:run_migrations")
+after :finishing, 'deploy:run_migrations'
 after :finishing, 'deploy:cleanup'
 after :finishing, 'deploy:restart'
 end

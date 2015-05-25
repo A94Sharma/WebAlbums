@@ -1,14 +1,25 @@
-set :stage, :staging
+set :stage, :production
 set :branch, :master
+set :rails_env, :production
+set :bundle_flags, '--deployment --verbose'
+set :bundle_roles, :all
+set :keep_releases, 25
 
-server '173.255.195.109',
-       user: 'root',
-       roles: %w{web app db},
+
+
+role :app, %w{59.179.133.67}
+role :web, %w{59.179.133.67}
+role :db,  %w{59.179.133.67}
+
+
+server '59.179.133.67',
+       roles: [:web, :app, :db],
        ssh_options: {
-          user: 'root',
-          auth_methods: %w(password),
-          password: 'gigumes@linode'
+         user: 'sumit',
+         keys: %w(/home/sumit/.ssh/publicandprivatekeypair.pem),
+         auth_methods: %w(password)
        }
+
 
 # you can set custom ssh options
 # it's possible to pass any option but you need to keep in mind that net/ssh understand limited list of options

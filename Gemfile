@@ -31,8 +31,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'acts_as_shopping_cart', '~> 0.2.1'
 gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby' 
 # Use Unicorn as the app server
-# gem 'unicorn'
-
+gem 'unicorn'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 gem 'acts-as-taggable-on', '~> 3.4' #for tagging purpose 
@@ -41,11 +40,9 @@ gem 'cancan'
 # NOTE: The sass-rails gem is included with new Rails applications by default.
 #       Please make sure that it is not already in your Gemfile before uncommenting it.
 #gem 'sass-rails'
-
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
-  gem 'capi'
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
 
@@ -53,10 +50,7 @@ group :development, :test do
   gem 'spring'
 
   gem 'rails_12factor', group: :production
-  gem 'capistrano', '~> 3.4.0'
-  gem 'capistrano-ext'
-  gem 'capistrano-rvm'
-  gem 'capistrano-bundler'
-  gem "capistrano-db-tasks", require: false
+	gem 'capistrano'
+	gem 'rvm-capistrano'
 end
 

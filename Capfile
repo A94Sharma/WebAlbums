@@ -1,8 +1,12 @@
 # Load DSL and set up stages
-require 'capistrano/setup'
+load 'deploy'
+load 'deploy/assets'
+load 'config/deploy'
+
+#require 'capistrano/setup'
 
 # Include default deployment tasks
-require 'capistrano/deploy'
+#require 'capistrano/deploy'
 
 # Include tasks from other gems included in your Gemfile
 #

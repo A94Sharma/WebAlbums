@@ -1,4 +1,3 @@
-set :rails_env, 'production'
 set :stage, :production
 set :branch, :master
 set :rails_env, :production
@@ -6,11 +5,11 @@ set :bundle_flags, '--deployment --verbose'
 set :bundle_roles, :all
 set :keep_releases, 25
 
-server '54.149.122.85',
+server '59.179.133.67',
        roles: [:web, :app, :db],
        ssh_options: {
          user: 'ubuntu',
-         keys: %w(~/.ssh/id_rsa.pub),
+         keys: %w(~/.ssh/id_rsa),
          forward_agent: false,
          auth_methods: %w(publickey)
        }

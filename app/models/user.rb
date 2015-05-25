@@ -7,6 +7,9 @@ class User < ActiveRecord::Base
    has_many :albums, dependent: :destroy
    has_many :pictures, through: :albums, dependent: :destroy
 
+   has_many :malbums, dependent: :destroy
+   has_many :songs, through: :malbums, dependent: :destroy
+
    has_many :articles, dependent: :destroy
    has_many :comments, through: :articles, dependent: :destroy
 
@@ -18,9 +21,10 @@ class User < ActiveRecord::Base
 
    after_create :create_first_album
    
-   def is?(role)
-    roles.include?(role.to_s)
-    end
+  def is?(role)
+    #role.include?(role.to_s)
+    true
+  end
    
     def create_first_album
      Album.new(title: 'My Album' ,description: 'Default Album' ) 

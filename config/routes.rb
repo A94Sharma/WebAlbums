@@ -26,6 +26,11 @@ Rails.application.routes.draw do
 	  resources :comments
 	end
   
-  
+  resources :users do
+    resources :malbums
+  end
+  resources :malbums do
+    resources :songs
+  end
   root 'welcome#index'
 end

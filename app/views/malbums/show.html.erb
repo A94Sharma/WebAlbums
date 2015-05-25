@@ -1,0 +1,22 @@
+<table width =500 height =100>
+  <div>
+  <tr>
+    <th><h2><%= @malbum.title %><h2></th>
+    <th><h2><%= @malbum.description %><h2></th>
+    <th><%= link_to 'Edit Album', edit_malbum_path(@malbum),:class=>"btn btn-success btn-small" %></th>
+  </tr>
+</div>
+  <% @songs.each do |song| %>
+    <tr>
+      <td> <%= audio_tag song.song.url, :class=> "audio_player", :preload=> true, controls: true%> </td>
+      <td><% song.tags.any? %>
+        <% song.tags.each do |tag| %>
+          <%= link_to tag.name, malbum_path(:tag=>tag.name),:class=>"btn btn-default"%>
+        <% end %>
+      </td>
+      <td><%= link_to ' Delete Song', malbum_song_path(song.malbum_id,song.id),
+        method: :delete,
+        data: { confirm: 'Are you sure?' }, :class=>"btn btn-danger btn-small" %></td>
+    </tr>
+  <% end %>
+</table>

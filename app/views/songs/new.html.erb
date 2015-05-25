@@ -1,0 +1,9 @@
+<div>
+	<%= form_for([@malbum, @malbum.songs.build]) do |f| %>
+		<p><h2>ADD YOUR SONG HERE</h2></p>
+		<%= f.file_field :song %>
+		<%= f.text_field :tag_list, :placeholder => "Tag" %>
+		<p><%= f.submit %></p>
+	<% end %><br>
+	<%= link_to 'Back to Malbum', malbums_path %>
+</div>

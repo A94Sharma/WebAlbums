@@ -1,0 +1,26 @@
+<div>
+  <h1>Listing Music Albums</h1>
+  <%= link_to 'New music album',  new_malbum_path, :class=>"btn btn-primary btn-small"%>
+  <table width =800 height =100>
+    <tr>
+      <th>Title</th>
+      <th>Text</th>
+    </tr>
+    <% @malbum.each do |album| %>
+      <tr>
+        <td><%= album.title %></td>
+        <td><%= album.description %></td><br>
+        <td><%= link_to ' View', malbum_path(album), :class=>"btn btn-primary btn-small"%>
+        <% if can? :edit, album %>
+          <%= link_to 'Edit', edit_malbum_path(album),:class=>"btn btn-success btn-small"%>
+        <%end%>
+        <% if can? :create, album %>
+          <%= link_to ' Add song', new_malbum_song_path(album.id), :class=>"btn btn-primary btn-small"%>
+        <%end%>
+        <% if can? :delete, album %>
+          <%= link_to 'Delete', malbum_path(album), method: :delete,data: { confirm: 'Are you sure?' }, :class=>"btn btn-danger btn-small" %>
+        <% end -%></td>
+      </tr>
+    <% end %>
+  </table>
+</div>

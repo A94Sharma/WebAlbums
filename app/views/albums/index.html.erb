@@ -1,7 +1,7 @@
 <h1>Listing Albums</h1>
  <%= link_to 'New album',  new_album_path %>
  
-<table>
+<table width =500 height =100>
   <tr>
     <th>Title</th>
     <th>Text</th>
@@ -24,9 +24,6 @@
       <%= link_to new_album_picture_path(album) do %>
         <span class ="glyphicon glyphicon-upload"></span>  <%end%>
         <%end%></td>
-     
-
-     <td> </td>
     </tr>
   <% end %>
 </table>

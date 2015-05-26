@@ -5,11 +5,11 @@ set :bundle_flags, '--deployment --verbose'
 set :bundle_roles, :all
 set :keep_releases, 25
 
-server '59.179.133.67',
+server '52.25.225.217',
        roles: [:web, :app, :db],
        ssh_options: {
          user: 'ubuntu',
-         keys: %w(~/.ssh/id_rsa),
+         keys: %w(/home/sumit/.ssh/publicandprivatekeypair.pem),
          forward_agent: false,
          auth_methods: %w(publickey)
        }

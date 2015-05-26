@@ -7,12 +7,12 @@ set :keep_releases, 25
 
 
 
-role :app, %w{59.179.133.67}
-role :web, %w{59.179.133.67}
+role :app, %w{52.25.225.217}
+role :web, %w{52.25.225.217}
 role :db,  %w{59.179.133.67}
 
 
-server '59.179.133.67',
+server '52.25.225.217',
        roles: [:web, :app, :db],
        ssh_options: {
          user: 'sumit',

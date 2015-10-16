@@ -5,6 +5,7 @@ class SongsController < ApplicationController
   
   def create 
     @song=@malbum.songs.new(song_params)
+    @song.user_id=current_user.id
     if @song.save
       redirect_to malbum_path(@malbum)
     else

@@ -37,6 +37,9 @@ gem 'unicorn'
 gem 'acts-as-taggable-on', '~> 3.4' #for tagging purpose 
 gem 'autoprefixer-rails'
 gem 'cancan'
+gem 'rails_12factor', group: :production
+gem 'capistrano'
+gem  'rvm-capistrano',  require: false
 # NOTE: The sass-rails gem is included with new Rails applications by default.
 #       Please make sure that it is not already in your Gemfile before uncommenting it.
 #gem 'sass-rails'
@@ -48,9 +51,5 @@ group :development, :test do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
-
-  gem 'rails_12factor', group: :production
-	gem 'capistrano'
-	gem 'rvm-capistrano'
 end
 
